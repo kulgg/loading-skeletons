@@ -2,6 +2,7 @@ import { cn } from "@/lib/utils";
 import "./globals.css";
 import { Inter } from "next/font/google";
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -13,8 +14,8 @@ export const metadata = {
 };
 
 const pages = [
-  { route: "/no-loading", name: "No Loading 🫥" },
-  { route: "/loading", name: "Loading ☀️" },
+  { route: "/no-loading", name: "No Loading" },
+  { route: "/loading", name: "Loading" },
   { route: "/suspense", name: "Suspense 🥷" },
 ];
 
@@ -37,12 +38,8 @@ export default function RootLayout({
           </h1>
           <nav className="flex items-center gap-4">
             {pages.map((x) => (
-              <Link
-                key={x.route}
-                href={x.route}
-                className="text-sm text-slate-200 hover:underline"
-              >
-                {x.name}
+              <Link key={x.route} href={x.route} className="">
+                <Button variant="outline">{x.name}</Button>
               </Link>
             ))}
           </nav>
