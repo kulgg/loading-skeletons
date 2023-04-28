@@ -12,15 +12,19 @@ async function Advanced() {
   return (
     <div className="grid grid-cols-2 gap-6">
       <Suspense fallback={<Skeleton className="h-32 w-full" />}>
+        {/* @ts-expect-error Server Component */}
         <RevenueStats />
       </Suspense>
       <Suspense fallback={<Skeleton className="h-32 w-full" />}>
+        {/* @ts-expect-error Server Component */}
         <SubscriptionStats />
       </Suspense>
       <Suspense fallback={<Skeleton className="h-32 w-full" />}>
+        {/* @ts-expect-error Server Component */}
         <SalesStats />
       </Suspense>
       <Suspense fallback={<Skeleton className="h-32 w-full" />}>
+        {/* @ts-expect-error Server Component */}
         <ActiveStats />
       </Suspense>
     </div>
