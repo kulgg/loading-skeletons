@@ -6,7 +6,7 @@ export async function GET(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
   const type = pathname.split("/").at(-1);
 
-  await sleep(randomInt(1000));
+  await sleep(randomInt(1500));
 
   if (type === "revenue") {
     return NextResponse.json({
