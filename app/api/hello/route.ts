@@ -1,3 +1,6 @@
+import { sleep } from "@/lib/utils";
+
 export async function GET(request: Request) {
-  return new Response('Hello, Next.js!')
+  await sleep(1000);
+  return new Response("jojojo");
 }
