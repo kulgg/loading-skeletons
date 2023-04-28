@@ -1,42 +1,41 @@
 import StatsCard from "@/components/StatsCard";
+import { fetchStats } from "@/lib/fetch";
 import { Activity, CreditCard, DollarSign, Users } from "lucide-react";
-import React from "react";
 
-async function Advanced() {
-  const response = await fetch(
-    `${process.env.NEXT_PUBLIC_SITE_URL}/api/hello`,
-    { cache: "no-cache" }
-  );
-  const json = await response.text();
+async function NoLoading() {
+  const revenueStats = await fetchStats("revenue");
+  const subscriptionsStats = await fetchStats("subscriptions");
+  const salesStats = await fetchStats("sales");
+  const activeStats = await fetchStats("active");
 
   return (
     <div className="grid grid-cols-2 gap-6">
       <StatsCard
-        title={"Total Revenue"}
-        stat={"$45,231.89"}
-        subline={"+20.1% from last month"}
+        title={revenueStats.title}
+        stat={revenueStats.stat}
+        subline={revenueStats.subline}
         icon={<DollarSign className="h-4 w-4 text-muted-foreground" />}
       />
       <StatsCard
-        title={"Subscriptions"}
-        stat={"+2350"}
-        subline={"+180.1% from last month"}
+        title={subscriptionsStats.title}
+        stat={subscriptionsStats.stat}
+        subline={subscriptionsStats.subline}
         icon={<Users className="h-4 w-4 text-muted-foreground" />}
       />
       <StatsCard
-        title={"Sales"}
-        stat={"+12,234"}
-        subline={"+19% from last month"}
+        title={salesStats.title}
+        stat={salesStats.stat}
+        subline={salesStats.subline}
         icon={<CreditCard className="h-4 w-4 text-muted-foreground" />}
       />
       <StatsCard
-        title={"Active Now"}
-        stat={"+573"}
-        subline={"+201 since last hour"}
+        title={activeStats.title}
+        stat={activeStats.stat}
+        subline={activeStats.subline}
         icon={<Activity className="h-4 w-4 text-muted-foreground" />}
       />
     </div>
   );
 }
 
-export default Advanced;
+export default NoLoading;
