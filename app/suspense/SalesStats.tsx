@@ -1,6 +1,6 @@
 import StatsCard from "@/components/StatsCard";
 import { fetchStats } from "@/lib/fetch";
-import { DollarSign } from "lucide-react";
+import { CreditCard, DollarSign } from "lucide-react";
 
 async function SalesStats() {
   const salesStats = await fetchStats("sales");
@@ -10,7 +10,7 @@ async function SalesStats() {
       title={salesStats.title}
       stat={salesStats.stat}
       subline={salesStats.subline}
-      icon={<DollarSign className="h-4 w-4 text-muted-foreground" />}
+      icon={<CreditCard className="h-4 w-4 text-muted-foreground" />}
     />
   );
 }
