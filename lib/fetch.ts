@@ -8,11 +8,7 @@ export interface StatsType {
 }
 
 export async function fetchStats(type: string): Promise<StatsType> {
-  await sleep(randomInt(2000));
-
-  // const a = await fetch("/api/yo", {
-  //   cache: "no-cache",
-  // });
+  await sleep(randomInt(3000));
 
   if (type === "revenue") {
     return {
