@@ -3,10 +3,18 @@ import { fetchStats } from "@/lib/fetch";
 import { Activity, CreditCard, DollarSign, Users } from "lucide-react";
 
 async function NoLoading() {
-  const revenueStats = await fetchStats("revenue");
-  const subscriptionsStats = await fetchStats("subscriptions");
-  const salesStats = await fetchStats("sales");
-  const activeStats = await fetchStats("active");
+  const revenueStatsPromise = fetchStats("revenue");
+  const subscriptionsStatsPromise = fetchStats("subscriptions");
+  const salesStatsPromise = fetchStats("sales");
+  const activeStatsPromise = fetchStats("active");
+
+  const [revenueStats, subscriptionsStats, salesStats, activeStats] =
+    await Promise.all([
+      revenueStatsPromise,
+      subscriptionsStatsPromise,
+      salesStatsPromise,
+      activeStatsPromise,
+    ]);
 
   return (
     <div className="grid grid-cols-2 gap-6">
