@@ -1,47 +1,28 @@
 import StatsCard from "@/components/StatsCard";
+import { Skeleton } from "@/components/ui/skeleton";
 import { fetchStats } from "@/lib/fetch";
 import { DollarSign, Users, CreditCard, Activity } from "lucide-react";
+import { Suspense } from "react";
+import RevenueStats from "./RevenueStats";
+import SubscriptionStats from "./SubscriptionsStats";
+import SalesStats from "./SalesStats";
+import ActiveStats from "./ActiveStats";
 
 async function Advanced() {
-  const revenueStatsPromise = fetchStats("revenue");
-  const subscriptionsStatsPromise = fetchStats("subscriptions");
-  const salesStatsPromise = fetchStats("sales");
-  const activeStatsPromise = fetchStats("active");
-
-  const [revenueStats, subscriptionsStats, salesStats, activeStats] =
-    await Promise.all([
-      revenueStatsPromise,
-      subscriptionsStatsPromise,
-      salesStatsPromise,
-      activeStatsPromise,
-    ]);
-
   return (
     <div className="grid grid-cols-2 gap-6">
-      <StatsCard
-        title={revenueStats.title}
-        stat={revenueStats.stat}
-        subline={revenueStats.subline}
-        icon={<DollarSign className="h-4 w-4 text-muted-foreground" />}
-      />
-      <StatsCard
-        title={subscriptionsStats.title}
-        stat={subscriptionsStats.stat}
-        subline={subscriptionsStats.subline}
-        icon={<Users className="h-4 w-4 text-muted-foreground" />}
-      />
-      <StatsCard
-        title={salesStats.title}
-        stat={salesStats.stat}
-        subline={salesStats.subline}
-        icon={<CreditCard className="h-4 w-4 text-muted-foreground" />}
-      />
-      <StatsCard
-        title={activeStats.title}
-        stat={activeStats.stat}
-        subline={activeStats.subline}
-        icon={<Activity className="h-4 w-4 text-muted-foreground" />}
-      />
+      <Suspense fallback={<Skeleton className="h-32 w-full" />}>
+        <RevenueStats />
+      </Suspense>
+      <Suspense fallback={<Skeleton className="h-32 w-full" />}>
+        <SubscriptionStats />
+      </Suspense>
+      <Suspense fallback={<Skeleton className="h-32 w-full" />}>
+        <SalesStats />
+      </Suspense>
+      <Suspense fallback={<Skeleton className="h-32 w-full" />}>
+        <ActiveStats />
+      </Suspense>
     </div>
   );
 }
