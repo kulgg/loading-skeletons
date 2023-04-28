@@ -11,9 +11,9 @@ export const metadata = {
 };
 
 const pages = [
-  { route: "/no-loading", name: "No Loading" },
-  { route: "/basic", name: "Basic 🫡" },
-  { route: "/advanced", name: "Advanced 🥷" },
+  { route: "/no-loading", name: "No Loading 🫥" },
+  { route: "/loading", name: "Loading ☀️" },
+  { route: "/suspense", name: "Suspense 🥷" },
 ];
 
 export default function RootLayout({
