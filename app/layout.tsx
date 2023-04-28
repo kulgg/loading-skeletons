@@ -22,7 +22,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="">
+    <html lang="en" className="dark">
       <body
         className={cn(
           "bg-slate-900 text-slate-100 container p-20",
